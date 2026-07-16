@@ -3743,10 +3743,10 @@ body::before {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .hero:not(.section-arrive),
-  .section:not(.section-arrive),
-  .contact-section:not(.section-arrive),
-  .social-strip:not(.section-arrive) {
+  .js-reveal-ready .hero:not(.section-arrive),
+  .js-reveal-ready .section:not(.section-arrive),
+  .js-reveal-ready .contact-section:not(.section-arrive),
+  .js-reveal-ready .social-strip:not(.section-arrive) {
     opacity: 0;
     filter: blur(12px);
     transform: translate3d(0, 120px, 0) scale(0.95);
@@ -4165,3 +4165,213 @@ main {
     flex-basis: 48px;
   }
 }
+
+/* Fast premium mode: keep cinematic style, reduce waiting and paint cost */
+@media (prefers-reduced-motion: no-preference) {
+  .section-arrive {
+    animation-duration: var(--section-rise-duration, 1.65s) !important;
+  }
+
+  .hero.section-arrive { --section-rise-duration: 1.8s; }
+  #about.section-arrive { --section-rise-duration: 1.45s; }
+  #education.section-arrive { --section-rise-duration: 1.55s; }
+  #projects.section-arrive { --section-rise-duration: 1.7s; }
+  #skills.section-arrive { --section-rise-duration: 1.5s; }
+  #interests.section-arrive { --section-rise-duration: 1.45s; }
+  #future.section-arrive { --section-rise-duration: 1.55s; }
+  .contact-section.section-arrive { --section-rise-duration: 1.5s; }
+  .social-strip.section-arrive { --section-rise-duration: 1.35s; }
+
+  .section-arrive .section-heading,
+  .section-arrive .contact-copy,
+  .section-arrive .about-story > *,
+  .section-arrive .bio-list,
+  .section-arrive .stats-band,
+  .section-arrive .education-card,
+  .section-arrive .project-filters,
+  .section-arrive .project-card,
+  .section-arrive .skill-group,
+  .section-arrive .ongoing-skills,
+  .section-arrive .hobby-card,
+  .section-arrive .personal-card,
+  .section-arrive .future-card,
+  .section-arrive .contact-list div,
+  .section-arrive .contact-form,
+  .social-strip.section-arrive a {
+    animation-duration: 1.05s !important;
+  }
+
+  .projects-rotate-once .project-card {
+    animation-duration: 2.25s !important;
+  }
+}
+
+@keyframes calmWaterRise {
+  0% { opacity: 0; filter: blur(6px); transform: translate3d(0, 76px, 0) scale(0.97); }
+  55% { opacity: 0.9; filter: blur(2px); }
+  100% { opacity: 1; filter: blur(0); transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@keyframes calmContentReveal {
+  0% { opacity: 0; filter: blur(6px); transform: translate3d(0, 46px, 0) scale(0.98); }
+  100% { opacity: 1; filter: blur(0); transform: translate3d(0, 0, 0) scale(1); }
+}
+
+.site-header,
+.hero-panel,
+.project-card,
+.education-card,
+.skill-group,
+.hobby-card,
+.personal-card,
+.signature-card,
+.future-card,
+.contact-form,
+.contact-list div,
+.social-strip a {
+  backdrop-filter: blur(10px) saturate(1.12) !important;
+}
+
+.ambient-glow { filter: blur(34px) !important; opacity: 0.3 !important; }
+.ambient-fog { filter: blur(16px) !important; opacity: 0.14 !important; }
+.particle-canvas { opacity: 0.42 !important; }
+
+/* Hero name ball-jump animation and smooth interaction polish */
+.hero-content h1 {
+  display: flex !important;
+  align-items: baseline;
+  gap: 0.18em;
+  white-space: nowrap !important;
+  overflow: visible;
+  contain: layout paint;
+}
+
+.hero-name-word {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.hero-name-letter {
+  display: inline-block;
+  transform: translate3d(0, 0, 0);
+  transform-origin: center bottom;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero.section-arrive .hero-name-letter {
+    animation: heroBallSettle 1.65s cubic-bezier(0.18, 0.9, 0.25, 1) both;
+    animation-delay: calc(0.55s + (var(--letter-index) * 0.045s));
+  }
+
+  .hero.section-arrive .hero-content h1 {
+    animation: none !important;
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+
+  .projects-rotate-once .project-card {
+    animation-duration: 1.45s !important;
+  }
+
+  .section-arrive .section-heading,
+  .section-arrive .contact-copy,
+  .section-arrive .about-story > *,
+  .section-arrive .bio-list,
+  .section-arrive .stats-band,
+  .section-arrive .education-card,
+  .section-arrive .project-filters,
+  .section-arrive .project-card,
+  .section-arrive .skill-group,
+  .section-arrive .ongoing-skills,
+  .section-arrive .hobby-card,
+  .section-arrive .personal-card,
+  .section-arrive .future-card,
+  .section-arrive .contact-list div,
+  .section-arrive .contact-form,
+  .social-strip.section-arrive a {
+    animation-duration: 0.82s !important;
+  }
+}
+
+@keyframes heroBallSettle {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -88px, 0) scale(0.86) rotateZ(-10deg);
+  }
+  34% {
+    opacity: 1;
+    transform: translate3d(0, 18px, 0) scale(1.08) rotateZ(5deg);
+  }
+  52% {
+    transform: translate3d(0, -38px, 0) scale(0.98) rotateZ(-3deg);
+  }
+  68% {
+    transform: translate3d(0, 9px, 0) scale(1.03) rotateZ(2deg);
+  }
+  82% {
+    transform: translate3d(0, -12px, 0) scale(1) rotateZ(-1deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1) rotateZ(0deg);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-content h1 {
+    display: grid !important;
+    gap: 0.04em;
+    white-space: normal !important;
+  }
+
+  .hero-name-word {
+    display: inline-flex;
+  }
+}
+
+@media (max-width: 760px) {
+  .particle-canvas {
+    opacity: 0.24 !important;
+  }
+
+  .ambient-fog,
+  .intro-cinema::before,
+  .intro-cinema::after {
+    display: none !important;
+  }
+}
+
+/* Stable hero name and visible interactive interests */
+.hero-content h1 {
+  display: grid !important;
+  gap: 0.04em !important;
+  white-space: normal !important;
+  overflow: visible !important;
+  max-width: min(100%, 980px) !important;
+}
+
+.hero-content h1 .hero-name-word {
+  display: block !important;
+  white-space: nowrap !important;
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+  animation: none !important;
+}
+
+.hero-name-letter,
+.hero.section-arrive .hero-name-letter {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+.hero.section-arrive .hero-content h1 {
+  animation: heroLineReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) both !important;
+  animation-delay: 0.45s !important;
+}
+
