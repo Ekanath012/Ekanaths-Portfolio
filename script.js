@@ -13,6 +13,8 @@ const revealSections = document.querySelectorAll(".hero, .section, .contact-sect
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const contactEndpoint = window.location.protocol === "file:" ? "http://127.0.0.1:8000/contact" : "/contact";
 
+document.documentElement.classList.add("js-reveal-ready");
+
 const trailerScenes = {
   home: {
     kicker: "Welcome",
@@ -94,7 +96,7 @@ const prepareHeroTitle = () => {
   }
 
   title.dataset.prepared = "true";
-  title.innerHTML = "<span>Ekanath</span> <span>Anehosur</span>";
+  title.innerHTML = '<span class="hero-name-word">Ekanath</span><span class="hero-name-word">Anehosur</span>';
 };
 
 const initLoader = () => {
@@ -104,7 +106,7 @@ const initLoader = () => {
 
   window.setTimeout(() => {
     loader.classList.add("is-hidden");
-  }, prefersReducedMotion ? 250 : 1450);
+  }, prefersReducedMotion ? 120 : 650);
 };
 
 const initParticles = () => {
@@ -119,6 +121,7 @@ const initParticles = () => {
   let deviceScale = 1;
   let animationFrame = 0;
   let isVisible = !document.hidden;
+  let lastDraw = 0;
 
   const resize = () => {
     width = window.innerWidth;
@@ -129,7 +132,7 @@ const initParticles = () => {
     particleCanvas.style.width = `${width}px`;
     particleCanvas.style.height = `${height}px`;
     ctx.setTransform(deviceScale, 0, 0, deviceScale, 0, 0);
-    const count = width < 700 ? 22 : 44;
+    const count = width < 700 ? 8 : 16;
     particles.length = 0;
     for (let i = 0; i < count; i += 1) {
       particles.push({
@@ -149,6 +152,12 @@ const initParticles = () => {
       return;
     }
 
+    if (time - lastDraw < 40) {
+      animationFrame = requestAnimationFrame(draw);
+      return;
+    }
+    lastDraw = time;
+
     ctx.clearRect(0, 0, width, height);
 
     particles.forEach((particle, index) => {
@@ -162,7 +171,7 @@ const initParticles = () => {
       ctx.beginPath();
       ctx.fillStyle = `rgba(198, 132, 255, ${particle.alpha})`;
       ctx.shadowColor = "rgba(168, 85, 247, 0.85)";
-      ctx.shadowBlur = 8;
+      ctx.shadowBlur = 4;
       ctx.arc(particle.x, particle.y, particle.r, 0, Math.PI * 2);
       ctx.fill();
 
@@ -201,6 +210,20 @@ initLoader();
 initParticles();
 
 if ("IntersectionObserver" in window && !prefersReducedMotion) {
+  const revealVisibleSections = () => {
+    revealSections.forEach((section) => {
+      if (section.dataset.animated === "true") {
+        return;
+      }
+
+      const rect = section.getBoundingClientRect();
+      const entersViewport = rect.top < window.innerHeight * 0.92 && rect.bottom > window.innerHeight * 0.08;
+      if (entersViewport) {
+        animateSection(section);
+      }
+    });
+  };
+
   const sectionObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -208,9 +231,12 @@ if ("IntersectionObserver" in window && !prefersReducedMotion) {
         sectionObserver.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.38, rootMargin: "0px 0px -12% 0px" });
+  }, { threshold: 0.06, rootMargin: "0px 0px -6% 0px" });
 
   revealSections.forEach((section) => sectionObserver.observe(section));
+  window.addEventListener("scroll", revealVisibleSections, { passive: true });
+  window.addEventListener("resize", revealVisibleSections);
+  window.setTimeout(revealVisibleSections, 80);
 } else {
   revealSections.forEach((section) => animateSection(section));
 }
