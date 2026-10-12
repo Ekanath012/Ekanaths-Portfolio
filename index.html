@@ -181,38 +181,96 @@
       <section class="section" id="projects">
         <div class="section-heading">
           <p class="eyebrow">Projects</p>
-          <h2>Hands-on work across full stack, cloud, DevOps, database, and academic learning.</h2>
+          <h2>Selected work in Java development, cloud deployment, DevOps, and computer science.</h2>
         </div>
 
         <div class="filter-bar" aria-label="Project filters">
           <button class="filter active" type="button" data-filter="all">All</button>
-          <button class="filter" type="button" data-filter="fullstack">Full Stack</button>
+          <button class="filter" type="button" data-filter="fullstack">Java &amp; Full Stack</button>
           <button class="filter" type="button" data-filter="cloud">Cloud</button>
           <button class="filter" type="button" data-filter="devops">DevOps</button>
           <button class="filter" type="button" data-filter="academic">Academic</button>
         </div>
 
         <div class="project-grid project-grid-wide">
-          <article class="project-card feature-card" data-category="fullstack">
-            <div class="project-media project-one">
-              <div class="project-logo food-logo" aria-hidden="true">
-                <span>SF</span>
-                <strong>Sangeeth Foods</strong>
+          <article class="project-card java-project-card" data-category="fullstack">
+            <div class="project-media project-eventhub">
+              <div class="project-logo eventhub-logo" aria-hidden="true">
+                <span>EH</span>
+                <strong>EventHub</strong>
               </div>
             </div>
             <div class="project-body">
-              <span class="project-type">Full Stack Development</span>
-              <h3>Sangeeth Foods</h3>
-              <p>
-                A full-stack food delivery application with responsive frontend,
-                backend APIs, authentication, database integration, and plans
-                for cloud deployment and DevOps automation.
+              <span class="project-type">Java Full Stack</span>
+              <h3>EventHub – Event Management System</h3>
+              <p class="project-summary">
+                Built a full-stack event management application with a Spring Boot REST API,
+                a React frontend and a MySQL database accessed through Spring Data JPA.
               </p>
+              <p class="project-stack"><span>Tech stack</span>Java · Spring Boot · Spring Security · JWT · Spring Data JPA · MySQL · React.js · Vite · Maven</p>
               <ul class="project-details">
-                <li>HTML, CSS, JavaScript, Python, FastAPI</li>
-                <li>SQLAlchemy, SQLite, JWT authentication</li>
-                <li>Cart, wishlist, checkout, profile, orders, offers</li>
+                <li>Spring Security and JWT authentication with role-based permissions.</li>
+                <li>Event registration, password recovery and email notifications.</li>
+                <li>QR code verification and PDF certificate generation.</li>
+                <li>Maven backend builds and a Vite React frontend connected through REST APIs.</li>
               </ul>
+              <div class="project-actions">
+                <a class="project-link" href="https://github.com/Ekanath012/Event-Hub-JavaFullStack" target="_blank" rel="noopener noreferrer" aria-label="View EventHub source code on GitHub, opens in a new tab">View on GitHub <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card java-project-card" data-category="fullstack">
+            <div class="project-media project-foodycat">
+              <div class="project-logo foodycat-logo" aria-hidden="true">
+                <span>FC</span>
+                <strong>FoodyCat</strong>
+              </div>
+            </div>
+            <div class="project-body">
+              <span class="project-type">Java Full Stack</span>
+              <h3>FoodyCat – Food Delivery Application</h3>
+              <p class="project-summary">
+                Developed a food delivery application with a Spring Boot REST backend, a React and Bootstrap frontend
+                using Axios for API calls, and MySQL storage through Hibernate/JPA.
+              </p>
+              <p class="project-stack"><span>Tech stack</span>Java · Spring Boot · Spring Security · JWT · Hibernate/JPA · MySQL · React.js · Bootstrap · Axios · Vite · Maven</p>
+              <ul class="project-details">
+                <li>Food search, cart and wishlist management.</li>
+                <li>Order processing and a payment workflow.</li>
+                <li>Delivery partner management and admin dashboards.</li>
+                <li>JWT authentication with Spring Security; Maven backend and Vite frontend using REST endpoints.</li>
+              </ul>
+              <div class="project-actions">
+                <a class="project-link" href="https://github.com/Ekanath012/FoodyCat" target="_blank" rel="noopener noreferrer" aria-label="View FoodyCat source code on GitHub, opens in a new tab">View on GitHub <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card java-project-card" data-category="fullstack">
+            <div class="project-media project-smartparking">
+              <div class="project-logo smartparking-logo" aria-hidden="true">
+                <span>SP</span>
+                <strong>SmartParking</strong>
+              </div>
+            </div>
+            <div class="project-body">
+              <span class="project-type">Java Web Application</span>
+              <h3>SmartParking – Parking Management System</h3>
+              <p class="project-summary">
+                Created a server-rendered parking management web application using Spring Boot and Thymeleaf,
+                with MySQL accessed through Spring Data JPA and Hibernate.
+              </p>
+              <p class="project-stack"><span>Tech stack</span>Java · Spring Boot · Spring Security · Spring Data JPA · Hibernate · MySQL · Thymeleaf · HTML5 · CSS3 · Maven</p>
+              <ul class="project-details">
+                <li>Parking slot availability and reservations.</li>
+                <li>Booking history and automated billing.</li>
+                <li>Administrative dashboards protected with Spring Security.</li>
+                <li>Thymeleaf, HTML and CSS pages, with Maven dependency management.</li>
+              </ul>
+              <div class="project-actions">
+                <a class="project-link" href="https://github.com/Ekanath012/Smart-parking-system" target="_blank" rel="noopener noreferrer" aria-label="View SmartParking source code on GitHub, opens in a new tab">View on GitHub <span aria-hidden="true">↗</span></a>
+              </div>
             </div>
           </article>
 
@@ -320,7 +378,7 @@
             </div>
             <div class="project-body">
               <span class="project-type">Database Project</span>
-              <h3>Event Management System</h3>
+              <h3>Event Management Database Mini Project</h3>
               <p>A DBMS mini-project designed to manage event-related information and demonstrate database design concepts.</p>
               <ul class="project-details">
                 <li>DBMS</li>

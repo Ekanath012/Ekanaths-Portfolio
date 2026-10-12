@@ -523,7 +523,7 @@ h3 { margin: 0; font-size: 1.2rem; }
 }
 
 .project-grid-wide {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .feature-card {
@@ -625,7 +625,6 @@ h3 { margin: 0; font-size: 1.2rem; }
   line-height: 1.15;
 }
 
-.project-one { background: linear-gradient(135deg, rgba(12, 108, 112, 0.88), rgba(183, 217, 104, 0.58)), url("assets/portfolio-hero.png") center / cover; }
 .project-two { background: linear-gradient(135deg, rgba(18, 62, 129, 0.9), rgba(245, 153, 46, 0.74)), repeating-linear-gradient(90deg, rgba(255,255,255,0.16) 0 1px, transparent 1px 44px); }
 .project-three { background: linear-gradient(135deg, rgba(17, 19, 23, 0.92), rgba(12, 108, 112, 0.7)), radial-gradient(circle at 30% 30%, rgba(183, 217, 104, 0.44), transparent 34%); }
 .project-four { background: linear-gradient(135deg, rgba(12, 108, 112, 0.94), rgba(21, 92, 199, 0.72)), repeating-linear-gradient(0deg, rgba(255,255,255,0.15) 0 1px, transparent 1px 22px), repeating-linear-gradient(90deg, rgba(255,255,255,0.12) 0 1px, transparent 1px 22px); }
@@ -4375,3 +4374,153 @@ main {
   animation-delay: 0.45s !important;
 }
 
+
+
+/* Java portfolio projects: a calmer, practical layout with clear source links. */
+.java-project-card {
+  border-color: rgba(17, 19, 23, 0.12);
+  border-radius: 12px;
+  background: #fffdf8;
+  box-shadow: 0 12px 28px rgba(30, 40, 48, 0.09);
+}
+
+.java-project-card:hover {
+  border-color: rgba(12, 108, 112, 0.42);
+  box-shadow: 0 18px 36px rgba(30, 40, 48, 0.14);
+  transform: translateY(-4px);
+}
+
+.java-project-card .project-media {
+  min-height: 170px;
+  aspect-ratio: 16 / 8;
+}
+
+.project-eventhub {
+  background: linear-gradient(125deg, #205b58, #4d9381);
+}
+
+.project-foodycat {
+  background: linear-gradient(125deg, #8d4b2c, #d28b4a);
+}
+
+.project-smartparking {
+  background: linear-gradient(125deg, #334d70, #7189a0);
+}
+
+.java-project-card .project-logo {
+  width: min(230px, 86%);
+  min-height: 112px;
+  border-color: rgba(255, 255, 255, 0.45);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(6px);
+}
+
+.java-project-card .project-logo span {
+  min-width: 54px;
+  min-height: 54px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+}
+
+.java-project-card .project-logo strong {
+  font-size: 1.12rem;
+}
+
+.java-project-card .project-body {
+  padding: 22px;
+}
+
+.java-project-card .project-body h3 {
+  line-height: 1.3;
+  letter-spacing: -0.025em;
+}
+
+.java-project-card .project-summary {
+  margin-bottom: 12px;
+}
+
+.project-stack {
+  margin: 4px 0 8px;
+  padding: 12px 13px;
+  border-left: 3px solid var(--teal);
+  border-radius: 0 8px 8px 0;
+  background: #f2f5f0;
+  color: #39434b;
+  font-size: 0.83rem;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+.project-stack span {
+  display: block;
+  margin-bottom: 3px;
+  color: #276765;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.java-project-card .project-details {
+  gap: 9px;
+  margin-top: 14px;
+}
+
+.java-project-card .project-details li {
+  font-size: 0.88rem;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.project-actions {
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 18px;
+}
+
+.java-project-card .project-body .project-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin: 0;
+  padding: 10px 14px;
+  border: 1px solid rgba(12, 108, 112, 0.26);
+  border-radius: 7px;
+  background: #f2f7f4;
+  color: #155957;
+  font-size: 0.88rem;
+  font-weight: 750;
+  transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.java-project-card .project-body .project-link:hover,
+.java-project-card .project-body .project-link:focus-visible {
+  border-color: #0c6c70;
+  background: #e4f0e9;
+  transform: translateY(-1px);
+  outline-offset: 3px;
+}
+
+@media (max-width: 1100px) {
+  .project-grid-wide {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .project-grid-wide {
+    grid-template-columns: 1fr;
+  }
+
+  .java-project-card .project-body {
+    padding: 18px;
+  }
+
+  .java-project-card .project-media {
+    min-height: 155px;
+  }
+}
